@@ -1,118 +1,289 @@
-@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap");
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    margin: 0; /*tira as margens*/
-    font-family: "Momo Trust Sans", sans-serif;
-    background-color: #F0F8FF;
+body {
+  margin: 0; /*tira as margens*/
+  font-family: "Momo Trust Sans", sans-serif;
+  background-color: #f0f8ff;
 }
 
 /* ESTILO DO HEADER */
 
-#header{
-    background-color: #6268E8;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
+#header {
+  background-color: #6268e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px 0; /* Add padding for better spacing on mobile */
 }
 
-#header p{
-    color: white;
-    font-size: 40px;
+#header p {
+  color: white;
+  font-size: 30px; /* Reduced size for better mobile fit */
+  text-align: center;
+  margin: 0; /* Remove default paragraph margins */
 }
 
-#header img{
-    width: 150px;
-    margin-right: 10px;
+#header img {
+  width: 100px; /* Reduced size for mobile */
+  margin-right: 10px;
 }
 
 /* ESTILO DA SECTION 1 */
 
-#section-1{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 20px;
-    height: 400px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.35)
+div.centered-container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  /* Center items along the main axis (vertical in this case) */
+  justify-content: center;
+  /* Center items along the cross axis (horizontal in this case) */
+  align-items: center;
+  width: 100%; /* Ensure it takes full width of parent */
 }
 
-#section-1 p{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    font-size: 20px;
-    padding-top: 20px;
+#section-1 {
+  /* Set margins to create padding effect on the sides */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  height: auto; /* Use auto height for flexible content */
+  width: 90%; /* Use a percentage for responsiveness */
+  max-width: 720px; /* Maximum width limit */
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.35);
+  padding: 20px 10px; /* Add internal padding */
 }
 
-#form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
+#section-1 p {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 18px; /* Reduced font size for mobile */
+  padding-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-#form input{
-    width: 70%;
-    height: 40px;
-    font-size: 18px;
-    padding-left: 10px;
-    border-radius: 5px;
-    border: 1px solid #6268E8;
+#form {
+  display: flex;
+  flex-direction: column; /* Stack input and button vertically on mobile */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
 }
 
-#form button{
-    width: 100px;
-    height: 44px;
-    margin-left: 10px;
-    background-color: #6268E8;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#form input {
+  width: 90%; /* Use more width on mobile */
+  height: 40px;
+  font-size: 16px; /* Reduced font size */
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #6268e8;
+  margin-bottom: 10px; /* Space between input and button on mobile */
+}
+
+#form button {
+  width: 90%; /* Use more width on mobile */
+  max-width: 150px; /* Limit button width */
+  height: 44px;
+  margin-left: 0; /* Remove margin-left when stacked */
+  background-color: #6268e8;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* ESTILO SECTION 2 */
 
-#section-2{
-    display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 20px;
+#section-2 {
+  display: flex;
+  flex-direction: column; /* Stack content vertically on mobile */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  width: 90%;
+  max-width: 1200px; /* Added max-width for large screens */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#info{
-    width: 100%;
-    /* background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.35); */
-    padding: 20px;
-    text-align: left;
-    font-size: 18px;
+#info {
+  width: 100%;
+  padding: 20px 0; /* Adjust padding */
+  text-align: left;
+  font-size: 16px; /* Reduced font size */
 }
 
-#info img{
-    display: block;
-    margin: 15px auto;
+#info img {
+  max-width: 100%; /* Ensure image doesn't overflow */
+  height: auto;
+  display: block;
+  margin: 15px auto;
 }
 
 /* ESTILO DO FOOTER */
 
-#footer{
-    background-color: #6268E8;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    bottom: 0;
-    width: 100%;
+#footer {
+  background-color: #6268e8;
+  color: white;
+  text-align: center;
+  padding: 15px 10px; /* Increased padding */
+  bottom: 0;
+  width: 100%;
+  font-size: 14px; /* Reduced font size */
 }
 
 #reference-text {
-    padding: 40px;
+  padding: 20px 10px; /* Reduced padding */
+  font-size: 14px;
+}
+
+/* --- PC/Tablet Styles (min-width: 768px) --- */
+@media (min-width: 768px) {
+  #header p {
+    font-size: 40px; /* Original size */
+  }
+
+  #header img {
+    width: 150px; /* Original size */
+  }
+
+  #section-1 {
+    width: 720px; /* Fixed width on PC */
+    height: 400px; /* Original height on PC */
+    padding: 20px;
+  }
+
+  #section-1 p {
+    font-size: 20px; /* Original size */
+    padding-top: 20px;
+  }
+
+  #form {
+    flex-direction: row; /* Horizontal layout on PC */
+    margin-top: 20px;
+  }
+
+  #form input {
+    width: 70%; /* Original width */
+    font-size: 18px; /* Original size */
+    margin-bottom: 0;
+  }
+
+  #form button {
+    width: 100px; /* Original width */
+    margin-left: 10px; /* Original margin */
+  }
+
+  #section-2 {
+    flex-direction: row; /* Horizontal layout is an option here, but sticking to column for a single flow unless content dictates side-by-side */
+    /* If you had two distinct columns for section-2, you'd use: 
+    
+    #section-2 {
+      display: flex;
+      flex-direction: row; 
+      justify-content: space-between;
+      ...
+    } 
+    
+    and give child elements a percentage width. Since #info is 100% width, it already behaves like a single-column layout on PC, which is fine. */
+  }
+
+  #info {
+    font-size: 18px; /* Original font size */
+    padding: 20px;
+  }
+
+  #footer {
+    padding: 10px 0; /* Original padding */
+    font-size: 16px;
+  }
+
+  #reference-text {
+    padding: 40px; /* Original padding */
+    font-size: 16px;
+  }
+}
+
+/* --- Larger PC Screens (min-width: 1024px) --- */
+@media (min-width: 1024px) {
+  /* Use a max-width on the body or a main wrapper to prevent content from stretching too wide on very large monitors */
+  body > div.centered-container {
+    /* For centered-container outside header/footer */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+/* * CSS for htmx elements during an active request.
+ * This class hides the element's original content and renders a spinning loader.
+ */
+
+/* * 1. Target the element while the request is active.
+ * - color: transparent hides text content.
+ * - font-size: 0; helps with inline elements like buttons.
+ * - min-height: Ensures the spinner has enough room to display.
+ */
+.htmx-request {
+  /* Hiding existing text content */
+  color: transparent !important;
+  text-shadow: none !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+
+  /* Setup for the loader overlay */
+  position: relative;
+  overflow: hidden;
+  min-height: 2.5rem; /* Increased size slightly for better visibility */
+  min-width: 2.5rem; /* Increased size slightly for better visibility */
+
+  /* Optional: Change background/opacity slightly */
+  opacity: 0.7; /* Increased opacity slightly */
+  transition: opacity 0.3s;
+
+  border-color: #ccc;
+}
+
+/* * 2. Create the spinning loader using the ::before pseudo-element.
+ * - position: absolute and transform: translate centers it perfectly.
+ */
+.htmx-request::before {
+  content: "";
+  display: block;
+
+  /* Positioning and size */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Spinner dimensions and style */
+  width: 2.5rem;
+  height: 2.5rem;
+
+  /* FIX: Changed color to blue/gray for visibility on light backgrounds */
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Light gray for the base circle */
+  border-top-color: #3b82f6; /* A distinct blue for the rotating part */
+  border-radius: 50%;
+
+  /* Add the animation */
+  animation: htmx-spinner-rotate 0.8s infinite linear;
+}
+
+/* * 3. Define the keyframes for the rotation animation.
+ */
+@keyframes htmx-spinner-rotate {
+  to {
+    /* Need to include the centering transform alongside rotation */
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
