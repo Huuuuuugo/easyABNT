@@ -1,9 +1,12 @@
 from enum import Enum
 from datetime import date
+from urllib.parse import urljoin
+import asyncio
+import re
 
 import aiohttp
 
-from .schemas import JournalArticle, ProceedingsArticle
+from .schemas import JournalArticle, ProceedingsArticle, Monograph
 
 
 class CrossrefTypes(Enum):
@@ -279,3 +282,68 @@ class CrossrefService:
 
             case _:
                 return work_res
+
+
+class OpenlibraryService:
+    class Exceptions:
+        class OpenlibraryException(Exception):
+            pass
+
+    @classmethod
+    def _format_monograph(cls, data: dict, isbn: str):
+        # get url
+        url = data.get(f"ISBN:{isbn}").get("info_url")  # type: ignore
+
+        # update data
+        data = data.get(f"ISBN:{isbn}").get("details")  # type: ignore
+
+        # get authors
+        main_author = ""
+        other_authors = []
+        for i, author in enumerate(data.get("authors")):  # type: ignore
+            name = author.get("name")
+            if i == 0:
+                main_author = name
+            else:
+                other_authors.append(name)
+
+        # get title and subtitle
+        title = data.get("title")
+        subtitle = data.get("subtitle")
+
+        # get publisher
+        publisher = data.get("publishers")[0]  # type: ignore
+
+        # get published year
+        published_at = int(re.search(r"\d{4}", data.get("publish_date")).group())  # type: ignore
+
+        # get revision
+        edition = int(data.get("revision")) if data.get("revision") else None  # type: ignore
+
+        # get location
+        location = data.get("publish_places")[0] if data.get("publish_places") else "[S.l.]"  # type: ignore
+
+        return Monograph(
+            main_author=main_author,
+            other_authors=other_authors,
+            title=title,  # type: ignore
+            subtitle=subtitle,
+            isbn=isbn,
+            url=url,
+            publisher=publisher,
+            edition=edition,
+            location=location,
+            published_at=published_at,
+        )
+
+    @classmethod
+    async def get_from_isbn(cls, isbn: str):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"https://openlibrary.org/api/books?bibkeys=ISBN:{isbn}&jscmd=details&format=json") as book_res:
+                if book_res.status != 200:
+                    msg = f"Unexpected status code when requestion work metadat from crossref: {book_res.status}."
+                    raise cls.Exceptions.OpenlibraryException(msg)
+
+                book_res = await book_res.json()
+
+            return cls._format_monograph(book_res, isbn)

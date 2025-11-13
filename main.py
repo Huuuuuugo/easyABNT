@@ -20,5 +20,19 @@ async def main():
         print(format_proceedings_artice(res))
 
 
+async def main2():
+    import sys
+    import json
+    from src.services import OpenlibraryService
+    from src.schemas import Monograph
+    from src.reference_maker import format_monograph
+
+    res = await OpenlibraryService.get_from_isbn(sys.argv[1])
+    if isinstance(res, dict):
+        open("dbg/output.json", "w", encoding="utf8").write(json.dumps(res, indent=2))
+    if isinstance(res, Monograph):
+        print(format_monograph(res))
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main2())

@@ -47,3 +47,20 @@ class ProceedingsArticle(BaseModel):
     pages: str
 
     published_at: date | int
+
+
+class Monograph(BaseModel):
+    main_author: str
+    other_authors: Optional[list[str]] = []
+
+    title: str
+    subtitle: Optional[str] = None
+
+    isbn: Optional[str] = None
+    url: Optional[str] = None
+
+    edition: Optional[int] = None
+    publisher: str
+    location: Optional[str] = "[S.l.]"
+
+    published_at: int
