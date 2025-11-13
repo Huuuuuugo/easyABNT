@@ -1,3 +1,4 @@
+import json
 from enum import Enum
 from datetime import date
 from urllib.parse import urljoin
@@ -54,6 +55,7 @@ class CrossrefService:
         subtitle = data.get("subtitle")
         if subtitle:
             subtitle = subtitle[0]
+            subtitle = subtitle.strip().strip(".")
         else:
             subtitle = None
 
@@ -65,10 +67,10 @@ class CrossrefService:
             msg = f"Failed to get container from 'container-title' key: {container}."
         try:
             journal_title, journal_subtitle = container.split(":", 1)
-            journal_title.strip().strip(".")
+            journal_title = journal_title.strip().strip(".")
             journal_subtitle = journal_subtitle.strip().strip(".")
         except ValueError:
-            journal_title = container
+            journal_title = container.strip().strip(".")
             journal_subtitle = None
 
         # get doi
@@ -177,6 +179,7 @@ class CrossrefService:
         subtitle = data.get("subtitle")
         if subtitle:
             subtitle = subtitle[0]
+            subtitle = subtitle.strip().strip(".")
         else:
             subtitle = None
 
@@ -188,10 +191,10 @@ class CrossrefService:
             msg = f"Failed to get container from 'container-title' key: {container}."
         try:
             journal_title, journal_subtitle = container.split(":", 1)
-            journal_title.strip().strip(".")
+            journal_title = journal_title.strip().strip(".")
             journal_subtitle = journal_subtitle.strip().strip(".")
         except ValueError:
-            journal_title = container
+            journal_title = container.strip().strip(".")
             journal_subtitle = None
 
         # get doi
@@ -274,7 +277,6 @@ class CrossrefService:
                     raise cls.Exceptions.CrossrefException(msg)
 
                 work_res = await work_res.json()
-                import json
 
                 open("dbg/output.json", "w", encoding="utf8").write(json.dumps(work_res, indent=2))
 
@@ -287,7 +289,8 @@ class CrossrefService:
                 return cls._format_proceedings_article(work_res)
 
             case _:
-                return work_res
+                msg = f"Work type not implemented yet: {work_type}."
+                raise cls.Exceptions.CrossrefException(msg)
 
 
 class OpenlibraryService:
@@ -306,12 +309,21 @@ class OpenlibraryService:
         # get authors
         main_author = ""
         other_authors = []
-        for i, author in enumerate(data.get("authors")):  # type: ignore
-            name = author.get("name")
-            if i == 0:
-                main_author = name
-            else:
-                other_authors.append(name)
+        if data.get("authors"):
+            for i, author in enumerate(data.get("authors")):  # type: ignore
+                name = author.get("name")
+                if i == 0:
+                    main_author = name
+                else:
+                    other_authors.append(name)
+
+        # use publisher name when authors are omited
+        else:
+            for i, name in enumerate(data.get("publishers")):  # type: ignore
+                if i == 0:
+                    main_author = name
+                else:
+                    other_authors.append(name)
 
         # get title and subtitle
         title = data.get("title")
@@ -351,5 +363,7 @@ class OpenlibraryService:
                     raise cls.Exceptions.OpenlibraryException(msg)
 
                 book_res = await book_res.json()
+
+            open("dbg/output.json", "w", encoding="utf8").write(json.dumps(book_res, indent=2))
 
             return cls._format_monograph(book_res, isbn)

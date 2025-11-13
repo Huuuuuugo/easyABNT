@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0; /*tira as margens*/
+    font-family: "Momo Trust Sans", sans-serif;
+    background-color: #F0F8FF;
+}
+
+/* ESTILO DO HEADER */
+
+#header{
+    background-color: #6268E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+#header p{
+    color: white;
+    font-size: 40px;
+}
+
+#header img{
+    width: 150px;
+    margin-right: 10px;
+}
+
+/* ESTILO DA SECTION 1 */
+
+#section-1{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.35)
+}
+
+#section-1 p{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#form input{
+    width: 70%;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #6268E8;
+}
+
+#form button{
+    width: 100px;
+    height: 44px;
+    margin-left: 10px;
+    background-color: #6268E8;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ESTILO SECTION 2 */
+
+#section-2{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+
+#info{
+    width: 100%;
+    /* background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.35); */
+    padding: 20px;
+    text-align: left;
+    font-size: 18px;
+}
+
+#info img{
+    display: block;
+    margin: 15px auto;
+}
+
+/* ESTILO DO FOOTER */
+
+#footer{
+    background-color: #6268E8;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#reference-text {
+    padding: 40px;
+}

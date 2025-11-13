@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <title>easyABNT</title>
+</head>
+
+<body>
+    <header id="header">
+        <img src="static/img/logo_branca-removebg-preview.2png.png" alt="">
+        <p style="font-family: roboto;">easyABNT</p>
+    </header>
+
+    <section id="section-1">
+
+        <p>Digite o DOI ou ISBN do trabalho que deseja referenciar</p>
+
+        <form id="form" hx-post="/make-reference/" hx-target="#reference-text">
+            <input type="text" name="id" placeholder="Digite aqui..." required>
+            <button type="submit">Pesquisar</button>
+        </form>
+        <div id="reference-text"></div>
+
+    </section>
+
+    <section id="section-2">
+
+        <div id="info">
+            <h2>O que é DOI e ISBN?</h2>
+            <p>O DOI é a sigla para Digital Object Identifier, ou Identificador de Objeto Digital. Trata-se portanto, de
+                um código alfanumérico exclusivo atribuído a documentos <strong>digitais</strong> , como artigos
+                científicos, teses, dissertações, e-books, entre outros. </p>
+            <img src="static/img/doi.png" alt="">
+            <p>Já ISBN (International Standard Book Number/Padrão Internacional de Numeração de Livro) é um padrão
+                numérico criado com o objetivo de fornecer uma espécie de “RG” para publicações monográficas, como
+                livros, artigos e apostilas.</p>
+            <img style="height: 200px;" src="static/img/ISBN.png" alt="">
+        </div>
+
+    </section>
+
+    <footer id="footer">
+        <p>© 2024 easyABNT. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

@@ -96,7 +96,7 @@ def format_journal_artice(data: JournalArticle):
 
     # basic required reference data
     title_str = f"{data.title}: {data.subtitle}" if data.subtitle else data.title
-    journal_title_str = f"<strong>{data.journal_title}<strong>: {data.journal_subtitle}" if data.journal_subtitle else f"<strong>{data.journal_title}<strong>"
+    journal_title_str = f"<strong>{data.journal_title}</strong>: {data.journal_subtitle}" if data.journal_subtitle else f"<strong>{data.journal_title}</strong>"
     volume_str = f", v. {data.volume}" if data.volume else ""
     issue_str = f", n. {data.issue}" if data.issue else ""
     section_str = f", {data.section}, p. {data.pages}" if data.section else ""

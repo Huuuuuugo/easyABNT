@@ -28,5 +28,13 @@ async def main():
                 print(format_monograph(res))
 
 
+def start_app():
+    import uvicorn
+    from src.app import app
+
+    uvicorn.run(app)
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    # asyncio.run(main())
+    start_app()
