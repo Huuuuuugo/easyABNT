@@ -193,7 +193,9 @@ class CrossrefService:
             raise cls.Exceptions.CrossrefException(msg)
 
         # get location
-        location = data.get("publisher-location")
+        location = data.get("event")
+        if location:
+            location = location.get("location")
         if not location:
             location = "[S.l.]"
 
@@ -251,6 +253,9 @@ class CrossrefService:
                     raise cls.Exceptions.CrossrefException(msg)
 
                 work_res = await work_res.json()
+                import json
+
+                open("dbg/output.json", "w", encoding="utf8").write(json.dumps(work_res, indent=2))
 
         work_type = work_res.get("message").get("type")
         match work_type:
