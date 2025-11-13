@@ -65,7 +65,7 @@ def format_proceedings_artice(data: ProceedingsArticle):
     journal_title_str = f"<strong>{data.proceeding_title}</strong>: {data.proceeding_subtitle}" if data.proceeding_subtitle else f"<strong>{data.proceeding_title}</strong>"
     volume_str = f", v. {data.volume}" if data.volume else ""
     issue_str = f", n. {data.issue}" if data.issue else ""
-    date_str = f", {data.published_at.day} {month_map[data.published_at.month]} {data.published_at.year}" if isinstance(data.published_at, date) else f"{data.published_at}"
+    date_str = f", {data.published_at.year}" if isinstance(data.published_at, date) else f", {data.published_at}"
 
     # format reference data
     reference = f"{author_str}. {title_str}. {journal_title_str}, {data.location}{volume_str}{issue_str}, p. {data.pages}{date_str}."
@@ -100,7 +100,7 @@ def format_journal_artice(data: JournalArticle):
     volume_str = f", v. {data.volume}" if data.volume else ""
     issue_str = f", n. {data.issue}" if data.issue else ""
     section_str = f", {data.section}, p. {data.pages}" if data.section else ""
-    date_str = f", {data.published_at.day} {month_map[data.published_at.month]} {data.published_at.year}" if isinstance(data.published_at, date) else f"{data.published_at}"
+    date_str = f", {data.published_at.year}" if isinstance(data.published_at, date) else f", {data.published_at}"
 
     # variable required reference data
     reference = f"{author_str}. {title_str}. {journal_title_str}, {data.location}{volume_str}{issue_str}"
